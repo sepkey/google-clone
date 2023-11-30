@@ -34,4 +34,7 @@ body {
   .link {
     @apply hover:underline cursor-pointer;
   }
+  .header-icon {
+    @apply bg-transparent hover:bg-gray-200 p-2 text-4xl rounded-full cursor-pointer;
+  }
 }
