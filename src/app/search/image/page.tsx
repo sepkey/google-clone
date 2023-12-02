@@ -3,12 +3,14 @@ import { ISearchItem } from '@/types';
 import Link from 'next/link';
 
 type Props = {
-  searchParams: { searchTerm: string };
+  searchParams: { searchTerm: string; start: string };
 };
 
 export default async function ImageSearchPage({ searchParams }: Props) {
+  const startIndex = searchParams.start || '1';
+
   const response = await fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image`
+    `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image&start=${startIndex}`
   );
 
   if (!response.ok) {
